@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--DVD Profiler Collection Export-->
+<DVD>
+  <ProfileTimestamp>2010-04-28T09:53:02.000Z</ProfileTimestamp>
+  <ID>8715664064764.9</ID>
+  <MediaTypes>
+    <DVD>true</DVD>
+    <HDDVD>false</HDDVD>
+    <BluRay>false</BluRay>
+  </MediaTypes>
+  <UPC>8-715664-064764</UPC>
+  <CollectionNumber>815</CollectionNumber>
+  <CollectionType>Owned</CollectionType>
+  <Title>The Quest: Der Fluch des Judas Kelch</Title>
+  <DistTrait/>
+  <OriginalTitle>The Librarian: Curse of the Judas Chalice</OriginalTitle>
+  <CountryOfOrigin>United States</CountryOfOrigin>
+  <ProductionYear>2008</ProductionYear>
+  <RunningTime>86</RunningTime>
+  <RatingSystem>Kijkwijzer</RatingSystem>
+  <Rating>12</Rating>
+  <RatingAge>12</RatingAge>
+  <RatingVariant>0</RatingVariant>
+  <RatingDetails>Geweld</RatingDetails>
+  <CaseType>Keep Case</CaseType>
+  <CaseSlipCover>true</CaseSlipCover>
+  <Genres>
+    <Genre>Adventure</Genre>
+  </Genres>
+  <Regions>
+    <Region>2</Region>
+  </Regions>
+  <Format>
+    <FormatAspectRatio>1.78</FormatAspectRatio>
+    <FormatVideoStandard>PAL</FormatVideoStandard>
+    <FormatLetterBox>true</FormatLetterBox>
+    <FormatPanAndScan>false</FormatPanAndScan>
+    <FormatFullFrame>false</FormatFullFrame>
+    <Format16X9>true</Format16X9>
+    <FormatDualSided>false</FormatDualSided>
+    <FormatDualLayered>false</FormatDualLayered>
+  </Format>
+  <Features>
+    <FeatureSceneAccess>false</FeatureSceneAccess>
+    <FeatureCommentary>false</FeatureCommentary>
+    <FeatureTrailer>false</FeatureTrailer>
+    <FeaturePhotoGallery>false</FeaturePhotoGallery>
+    <FeatureDeletedScenes>false</FeatureDeletedScenes>
+    <FeatureMakingOf>false</FeatureMakingOf>
+    <FeatureProductionNotes>false</FeatureProductionNotes>
+    <FeatureGame>false</FeatureGame>
+    <FeatureDVDROMContent>false</FeatureDVDROMContent>
+    <FeatureMultiAngle>false</FeatureMultiAngle>
+    <FeatureMusicVideos>false</FeatureMusicVideos>
+    <FeatureInterviews>false</FeatureInterviews>
+    <FeatureStoryboardComparisons>false</FeatureStoryboardComparisons>
+    <FeatureOuttakes>false</FeatureOuttakes>
+    <FeatureClosedCaptioned>false</FeatureClosedCaptioned>
+    <FeatureTHXCertified>false</FeatureTHXCertified>
+    <FeaturePIP>false</FeaturePIP>
+    <FeatureBDLive>false</FeatureBDLive>
+    <FeatureBonusTrailers>false</FeatureBonusTrailers>
+    <FeatureDigitalCopy>false</FeatureDigitalCopy>
+    <OtherFeatures/>
+  </Features>
+  <Studios/>
+  <MediaCompanies/>
+  <Audio>
+    <AudioTrack>
+      <AudioContent>English</AudioContent>
+      <AudioFormat>Dolby Digital</AudioFormat>
+      <AudioChannels>5.1</AudioChannels>
+    </AudioTrack>
+  </Audio>
+  <Subtitles>
+    <Subtitle>Dutch</Subtitle>
+  </Subtitles>
+  <SRP DenominationType="GBP" DenominationDesc="Great Britain (Pound)" FormattedValue="£11,20">11.2</SRP>
+  <Discs/>
+  <SortTitle>Quest 3</SortTitle>
+  <LastEdited>2011-03-29T16:36:07.000Z</LastEdited>
+  <WishPriority>0</WishPriority>
+  <CountAs>1</CountAs>
+  <PurchaseInfo>
+    <PurchasePrice DenominationType="EUR" DenominationDesc="Europe (Euro)" FormattedValue="€13,65">13.65</PurchasePrice>
+    <PurchasePlace>Amazon.co.uk</PurchasePlace>
+    <PurchasePlaceType>O</PurchasePlaceType>
+    <PurchasePlaceWebsite>www.amazon.co.uk</PurchasePlaceWebsite>
+    <PurchaseDate>2011-03-29</PurchaseDate>
+  </PurchaseInfo>
+  <Review Film="0" Video="0" Audio="0" Extras="0"/>
+  <MediaBanners Front="Automatic" Back="Automatic"/>
+  <Events/>
+  <BoxSet>
+    <Parent/>
+    <Contents/>
+  </BoxSet>
+  <LoanInfo>
+    <Loaned>false</Loaned>
+  </LoanInfo>
+</DVD>

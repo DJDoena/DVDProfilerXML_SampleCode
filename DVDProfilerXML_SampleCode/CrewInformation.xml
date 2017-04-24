@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<CrewInformation>
+  <Title>Der unglaubliche Hulk: Season 1: Disc 1</Title>
+  <Credits>
+    <Divider Caption="1.01 The Incredible Hulk" Type="Episode"/>
+    <Credit FirstName="Kenneth" MiddleName="" LastName="Johnson" BirthYear="1942" CreditType="Direction" CreditSubtype="Director" CreditedAs=""/>
+    <Credit FirstName="Kenneth" MiddleName="" LastName="Johnson" BirthYear="1942" CreditType="Writing" CreditSubtype="Writer" CreditedAs="" CustomRole="Written By"/>
+    <Credit FirstName="Joseph" MiddleName="" LastName="Harnell" BirthYear="1924" CreditType="Music" CreditSubtype="Composer" CreditedAs=""/>
+    <Divider Caption="1.02 Death in the Family" Type="Episode"/>
+    <Credit FirstName="Alan" MiddleName="J." LastName="Levi" BirthYear="0" CreditType="Direction" CreditSubtype="Director" CreditedAs=""/>
+    <Credit FirstName="Kenneth" MiddleName="" LastName="Johnson" BirthYear="1942" CreditType="Writing" CreditSubtype="Writer" CreditedAs="" CustomRole="Written By"/>
+    <Credit FirstName="Joseph" MiddleName="" LastName="Harnell" BirthYear="1924" CreditType="Music" CreditSubtype="Composer" CreditedAs=""/>
+  </Credits>
+</CrewInformation>
