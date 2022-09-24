@@ -5,8 +5,8 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using DoenaSoft.DVDProfiler.DVDProfilerHelper;
-using Version381 = DoenaSoft.DVDProfiler.DVDProfilerXML.Version381;
-using Version400 = DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
+using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400;
+using DoenaSoft.DVDProfiler.DVDProfilerXML.Version400.Localities;
 
 namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 {
@@ -65,18 +65,18 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void CreateDVDFromScratch()
         {
-            Version400.User user = new Version400.User();
+            User user = new User();
             user.FirstName = "DJ Doena";
 
-            Version400.Collection collection = new Version400.Collection();
-            collection.DVDList = new Version400.DVD[1];
-            collection.DVDList[0] = new Version400.DVD();
+            Collection collection = new Collection();
+            collection.DVDList = new DVD[1];
+            collection.DVDList[0] = new DVD();
             collection.DVDList[0].Title = "My Movie";
-            collection.DVDList[0].DiscList = new Version400.Disc[1];
-            collection.DVDList[0].DiscList[0] = new Version400.Disc();
+            collection.DVDList[0].DiscList = new Disc[1];
+            collection.DVDList[0].DiscList[0] = new Disc();
             collection.DVDList[0].DiscList[0].DescriptionSideA = "Main Feature";
-            collection.DVDList[0].AudioList = new Version400.AudioTrack[1];
-            collection.DVDList[0].AudioList[0] = new Version400.AudioTrack();
+            collection.DVDList[0].AudioList = new AudioTrack[1];
+            collection.DVDList[0].AudioList[0] = new AudioTrack();
             collection.DVDList[0].AudioList[0].Content = "German";
             collection.DVDList[0].AudioList[0].Format = "Dolby Digital";
             collection.DVDList[0].AudioList[0].Channels = "5.1";
@@ -86,10 +86,10 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             collection.DVDList[0].LoanInfo.Due = new DateTime(2012, 3, 31);
             collection.DVDList[0].LoanInfo.DueSpecified = true;
             collection.DVDList[0].LoanInfo.User = user;
-            collection.DVDList[0].EventList = new Version400.Event[1];
-            collection.DVDList[0].EventList[0] = new Version400.Event();
+            collection.DVDList[0].EventList = new Event[1];
+            collection.DVDList[0].EventList[0] = new Event();
             collection.DVDList[0].EventList[0].Timestamp = DateTime.UtcNow;
-            collection.DVDList[0].EventList[0].Type = Version400.EventType.Borrowed;
+            collection.DVDList[0].EventList[0].Type = EventType.Borrowed;
             collection.DVDList[0].EventList[0].User = user;
 
             collection.Serialize(@"FromScratch.xml");
@@ -97,11 +97,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void ReadCollectionFile(String inputCollectionFile)
         {
-            Version400.Collection collection = DVDProfilerSerializer<Version400.Collection>.Deserialize(inputCollectionFile);
+            Collection collection = DVDProfilerSerializer<Collection>.Deserialize(inputCollectionFile);
 
             if ((collection != null) && (collection.DVDList != null) && (collection.DVDList.Length > 0))
             {
-                foreach (Version400.DVD dvd in collection.DVDList)
+                foreach (DVD dvd in collection.DVDList)
                 {
                     Console.WriteLine(dvd.ToString());
                 }
@@ -113,11 +113,11 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            Version400.Utilities.SortByTitleAscending(collection);
+            Utilities.SortByTitleAscending(collection);
 
             if ((collection != null) && (collection.DVDList != null) && (collection.DVDList.Length > 0))
             {
-                foreach (Version400.DVD dvd in collection.DVDList)
+                foreach (DVD dvd in collection.DVDList)
                 {
                     Console.WriteLine(dvd.ToString());
                 }
@@ -129,13 +129,13 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            Version400.CollectionTree tree = Version400.Utilities.GetCollectionTree(collection);
+            CollectionTree tree = Utilities.GetCollectionTree(collection);
 
-            Version400.Utilities.SortById(tree, true);
+            Utilities.SortById(tree, true);
 
             if (tree.DVDList.Count > 0)
             {
-                foreach (Version400.DVDNode dvd in tree.DVDList)
+                foreach (DVDNode dvd in tree.DVDList)
                 {
                     WriteHierarchy(dvd, 0);
                 }
@@ -145,13 +145,13 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            tree = Version400.Utilities.GetCollectionTree(collection);
+            tree = Utilities.GetCollectionTree(collection);
 
-            Version400.Utilities.SortByTitleAscending(tree, true);
+            Utilities.SortByTitleAscending(tree, true);
 
             if (tree.DVDList.Count > 0)
             {
-                foreach (Version400.DVDNode dvd in tree.DVDList)
+                foreach (DVDNode dvd in tree.DVDList)
                 {
                     WriteHierarchy(dvd, 0);
                 }
@@ -161,15 +161,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            tree = Version400.Utilities.GetCollectionTree(collection);
+            tree = Utilities.GetCollectionTree(collection);
 
-            Version400.Utilities.SortById(tree, true);
+            Utilities.SortById(tree, true);
 
-            Version400.Utilities.SortByTitleAscending(tree, false);
+            Utilities.SortByTitleAscending(tree, false);
 
             if (tree.DVDList.Count > 0)
             {
-                foreach (Version400.DVDNode dvd in tree.DVDList)
+                foreach (DVDNode dvd in tree.DVDList)
                 {
                     WriteHierarchy(dvd, 0);
                 }
@@ -182,7 +182,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void ReadDVDFile()
         {
-            Version400.DVD dvd = DVDProfilerSerializer<Version400.DVD>.Deserialize("DVD.xml");
+            DVD dvd = DVDProfilerSerializer<DVD>.Deserialize("DVD.xml");
 
             if (dvd != null)
             {
@@ -198,7 +198,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void ReadCastInformationFile()
         {
-            Version400.CastInformation cast = DVDProfilerSerializer<Version400.CastInformation>.Deserialize("CastInformation.xml");
+            CastInformation cast = DVDProfilerSerializer<CastInformation>.Deserialize("CastInformation.xml");
 
             OutputCast(cast);
 
@@ -206,9 +206,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            Version400.Utilities.CopyCastInformationToClipboard(cast);
+            Utilities.CopyCastInformationToClipboard(cast);
 
-            if (Version400.Utilities.TryGetCastInformationFromClipboard(out cast))
+            if (Utilities.TryGetCastInformationFromClipboard(out cast))
             {
                 OutputCast(cast);
             }
@@ -220,21 +220,21 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.ReadLine();
         }
 
-        private static void WriteHierarchy(Version400.DVDNode node, Int32 indent)
+        private static void WriteHierarchy(DVDNode node, Int32 indent)
         {
             Console.Write(String.Empty.PadLeft(indent));
             Console.WriteLine(node.ToString());
 
             if ((node.ChildrenList != null) && (node.ChildrenList.Count > 0))
             {
-                foreach (Version400.DVDNode childNode in node.ChildrenList)
+                foreach (DVDNode childNode in node.ChildrenList)
                 {
                     WriteHierarchy(childNode, indent + 4);
                 }
             }
         }
 
-        private static void OutputCast(Version400.CastInformation cast)
+        private static void OutputCast(CastInformation cast)
         {
             if (cast != null)
             {
@@ -244,15 +244,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                 {
                     foreach (Object item in cast.CastList)
                     {
-                        if (item is Version400.Divider)
+                        if (item is Divider)
                         {
-                            Version400.Divider divider = (Version400.Divider)item;
+                            Divider divider = (Divider)item;
 
                             Console.WriteLine("--- " + divider.ToString() + " ---");
                         }
                         else
                         {
-                            Version400.CastMember actor = (Version400.CastMember)item;
+                            CastMember actor = (CastMember)item;
 
                             Console.WriteLine(actor.ToString());
                         }
@@ -263,7 +263,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void ReadCrewInformationFile()
         {
-            Version400.CrewInformation crew = DVDProfilerSerializer<Version400.CrewInformation>.Deserialize("CrewInformation.xml");
+            CrewInformation crew = DVDProfilerSerializer<CrewInformation>.Deserialize("CrewInformation.xml");
 
             OutputCrew(crew);
 
@@ -271,9 +271,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.WriteLine("Press <Enter> to continue.");
             Console.ReadLine();
 
-            Version400.Utilities.CopyCrewInformationToClipboard(crew);
+            Utilities.CopyCrewInformationToClipboard(crew);
 
-            if (Version400.Utilities.TryGetCrewInformationFromClipboard(out crew))
+            if (Utilities.TryGetCrewInformationFromClipboard(out crew))
             {
                 OutputCrew(crew);
             }
@@ -285,7 +285,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.ReadLine();
         }
 
-        private static void OutputCrew(Version400.CrewInformation crew)
+        private static void OutputCrew(CrewInformation crew)
         {
             if (crew != null)
             {
@@ -295,15 +295,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                 {
                     foreach (Object item in crew.CrewList)
                     {
-                        if (item is Version400.CrewDivider)
+                        if (item is CrewDivider)
                         {
-                            Version400.CrewDivider divider = (Version400.CrewDivider)item;
+                            CrewDivider divider = (CrewDivider)item;
 
                             Console.WriteLine("--- " + divider.ToString() + " ---");
                         }
                         else
                         {
-                            Version400.CrewMember crewMember = (Version400.CrewMember)item;
+                            CrewMember crewMember = (CrewMember)item;
 
                             Console.WriteLine(crewMember.ToString());
                         }
@@ -314,15 +314,15 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void ReadLocalitiesXOD()
         {
-            Version381.Localities localities = Version381.Localities.Deserialize();
+            Localities localities = Localities.Deserialize();
 
-            if ((localities != null) && (localities.LocalityList != null) && (localities.LocalityList.Length > 0))
+            if ((localities != null) && (localities.Locality != null) && (localities.Locality.Length > 0))
             {
-                List<Version381.Locality> sortedList = new List<Version381.Locality>(localities.LocalityList);
+                List<Locality> sortedList = new List<Locality>(localities.Locality);
 
-                sortedList.Sort(new Comparison<Version381.Locality>(SortById));
+                sortedList.Sort(new Comparison<Locality>(SortById));
 
-                foreach (Version381.Locality locality in sortedList)
+                foreach (Locality locality in sortedList)
                 {
                     Console.WriteLine(locality.ID + ": " + locality.Description);
                 }
@@ -331,9 +331,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                 Console.WriteLine("Press <Enter> to continue.");
                 Console.ReadLine();
 
-                sortedList.Sort(new Comparison<Version381.Locality>(SortByName));
+                sortedList.Sort(new Comparison<Locality>(SortByName));
 
-                foreach (Version381.Locality locality in sortedList)
+                foreach (Locality locality in sortedList)
                 {
                     Console.WriteLine(locality.Description + ": " + locality.ID);
                 }
@@ -344,23 +344,23 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.ReadLine();
         }
 
-        private static Int32 SortById(Version381.Locality left, Version381.Locality right)
+        private static Int32 SortById(Locality left, Locality right)
         {
             return (left.ID.CompareTo(right.ID));
         }
 
-        private static Int32 SortByName(Version381.Locality left, Version381.Locality right)
+        private static Int32 SortByName(Locality left, Locality right)
         {
             return (left.Description.CompareTo(right.Description));
         }
 
         private static void CheckSchemaValidity(String arg)
         {
-            Version400.Collection collection = DVDProfilerSerializer<Version400.Collection>.Deserialize(arg);
+            Collection collection = DVDProfilerSerializer<Collection>.Deserialize(arg);
 
             if ((collection != null) && (collection.DVDList != null) && (collection.DVDList.Length > 0))
             {
-                foreach (Version400.DVD dvd in collection.DVDList)
+                foreach (DVD dvd in collection.DVDList)
                 {
                     String dvdName = dvd.ToString();
 
@@ -368,7 +368,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
                     if ((dvd.AudioList != null) && (dvd.AudioList.Length > 0))
                     {
-                        foreach (Version400.AudioTrack track in dvd.AudioList)
+                        foreach (AudioTrack track in dvd.AudioList)
                         {
                             WriteNodeError(track.OpenElements, dvdName + " [Audio] has open elements:");
                         }
@@ -383,7 +383,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                     {
                         foreach (Object item in dvd.CastList)
                         {
-                            Version400.CastMember castMember = item as Version400.CastMember;
+                            CastMember castMember = item as CastMember;
 
                             if (castMember != null)
                             {
@@ -391,7 +391,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                             }
                             else
                             {
-                                Version400.Divider divider = (Version400.Divider)item;
+                                Divider divider = (Divider)item;
 
                                 WriteNodeError(divider.OpenAttributes, dvdName + " [Actors - Divider] has open attributes:");
                             }
@@ -402,7 +402,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                     {
                         foreach (Object item in dvd.CrewList)
                         {
-                            Version400.CrewMember crewMember = item as Version400.CrewMember;
+                            CrewMember crewMember = item as CrewMember;
 
                             if (crewMember != null)
                             {
@@ -410,7 +410,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                             }
                             else
                             {
-                                Version400.Divider divider = (Version400.Divider)item;
+                                Divider divider = (Divider)item;
 
                                 WriteNodeError(divider.OpenAttributes, dvdName + " [Credits - Divider] has open attributes:");
                             }
@@ -419,7 +419,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
                     if ((dvd.DiscList != null) && (dvd.DiscList.Length > 0))
                     {
-                        foreach (Version400.Disc disc in dvd.DiscList)
+                        foreach (Disc disc in dvd.DiscList)
                         {
                             WriteNodeError(disc.OpenElements, dvdName + " [Disc] has open elements:");
                         }
@@ -427,7 +427,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
                     if ((dvd.EventList != null) && (dvd.EventList.Length > 0))
                     {
-                        foreach (Version400.Event eventItem in dvd.EventList)
+                        foreach (Event eventItem in dvd.EventList)
                         {
                             WriteNodeError(eventItem.OpenElements, dvdName + " [Event] has open elements:");
                         }
@@ -495,7 +495,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
                     if ((dvd.TagList != null) && (dvd.TagList.Length > 0))
                     {
-                        foreach (Version400.Tag tag in dvd.TagList)
+                        foreach (Tag tag in dvd.TagList)
                         {
                             WriteNodeError(tag.OpenAttributes, dvdName + " [Tag] has open attributes:");
                         }
@@ -596,9 +596,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             Console.ReadLine();
 
             //And now we can still create a list of our "normal" DVD objects:
-            IEnumerable<Version400.DVD> filteredList = filtered.Select(dvd => DVDProfilerSerializer<Version400.DVD>.FromString(dvd.ToString()));
+            IEnumerable<DVD> filteredList = filtered.Select(dvd => DVDProfilerSerializer<DVD>.FromString(dvd.ToString()));
 
-            foreach (Version400.DVD dvd in filteredList)
+            foreach (DVD dvd in filteredList)
             {
                 Console.WriteLine(dvd.ToString());
             }
@@ -664,17 +664,17 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
 
         private static void UsingSerializerClasses(String inputCollectionFile)
         {
-            Version400.Collection collection = DVDProfilerSerializer<Version400.Collection>.Deserialize(inputCollectionFile);
+            Collection collection = DVDProfilerSerializer<Collection>.Deserialize(inputCollectionFile);
 
             if ((collection != null) && (collection.DVDList != null) && (collection.DVDList.Length > 0))
             {
-                List<Version400.DVD> list = new List<Version400.DVD>(collection.DVDList);
+                List<DVD> list = new List<DVD>(collection.DVDList);
 
                 //Find all DVDs with Region 1
                 //This is a lambda expression:
-                IEnumerable<Version400.DVD> filtered = list.Where(dvd => (dvd.RegionList != null && dvd.RegionList.Contains("1")));
+                IEnumerable<DVD> filtered = list.Where(dvd => (dvd.RegionList != null && dvd.RegionList.Contains("1")));
 
-                foreach (Version400.DVD dvd in filtered)
+                foreach (DVD dvd in filtered)
                 {
                     if (dvd != null)
                     {
@@ -687,9 +687,9 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                 Console.ReadLine();
 
                 //this is the same code using a method:
-                filtered = list.Where(new Func<Version400.DVD, Boolean>(FindRegionOne));
+                filtered = list.Where(new Func<DVD, Boolean>(FindRegionOne));
 
-                foreach (Version400.DVD dvd in filtered)
+                foreach (DVD dvd in filtered)
                 {
                     Console.WriteLine(dvd.Title);
                 }
@@ -701,7 +701,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
                 //Find all DVDs that DON'T have english subs
                 filtered = list.Where(dvd => (dvd.SubtitleList != null && dvd.SubtitleList.Contains("English") == false));
 
-                foreach (Version400.DVD dvd in filtered)
+                foreach (DVD dvd in filtered)
                 {
                     Console.WriteLine(dvd.Title);
                 }
@@ -712,7 +712,7 @@ namespace DoenaSoft.DVDProfiler.DVDProfilerXML_SampleCode
             }
         }
 
-        private static Boolean FindRegionOne(Version400.DVD dvd)
+        private static Boolean FindRegionOne(DVD dvd)
         {
             return (dvd.RegionList != null && dvd.RegionList.Contains("1"));
         }
